@@ -1,4 +1,4 @@
-# Bloggger
+# Blogger
 
 #### The application enables you to write blogs,and allows users to view and comment with it. 04/June/2019
 
@@ -35,13 +35,13 @@ There are currently no known bugs in the application.
 * Flask
 
 ## Support and contact details
-For more information, questions, or help using the program, get in touch with me on +254707280118 or email:orkomunge@gmail.com.
+For more information, questions, or help using the program, get in touch with me on +254707280118 or email:orokomunge@gmail.com.
 
 ## License
 
 MIT License
 
-Copyright (c) 2019 MUnge Kevin Oroko
+Copyright (c) 2019 Munge Kevin Oroko
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sub-license, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
