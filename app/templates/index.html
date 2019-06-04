@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+    {% for alert in get_flashed_messages() %}
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ alert }}
+    </div>
+{% endfor %}
+<div class="container-fluid" >
+    <div class="jumbotron" style="padding-top:2%">
+        <h1 style="text-align:center">This is Blogger</h1>
+        <div style="text-align:center">
+        <p class="random">"{{random.quote}}"</p>
+        <p class="random" style="text-decoration:underline">{{random.author}}</p>
+        </div>
+
+        <img src="https://www.fontfabric.com/wp-content/uploads/2018/11/blogger-timg-hover@2x.png" alt="" >
+    </div> 
+
+    <hr>
+    <div >
+        {{ macro.displayPostList(post_data)}}
+    </div> 
+
+</div>
+<footer>
+    <div class="container-fluid text-center">
+        <div class="jumbotron" style="background-color:rgba(211, 211, 211, 0.322)">
+            <h2>Get alerted!</h2>
+            <h4>enter you email address to get notifications</h4>
+                <form action="" method="POST">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="Name" >
+                            <input type="text" placeholder="First Name!"class="form-control">
+                        </label>
+                        <label for="Email Address">
+                            <input type="text" placeholder="Email Address"class="form-control">
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <button type="submit" class="btn btn-info">Subscribe</button>
+        </div>
+    </div>
+    <p>This site was created with passion have fun exploring</p>
+    </footer>
+{% endblock %}
+
+

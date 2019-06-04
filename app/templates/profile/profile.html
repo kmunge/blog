@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+    <div class="well" >
+        <div class="jumbotron" style="text-align:center" id="profile_jumbotron">        
+        
+            <h2 class="nameuser"> {{user.username|capitalize}} </h2>
+            {% if user.bio %}
+            <p> <strong>{{user.bio|capitalize}}</strong></p>
+        {%else%}
+            <p> {{user.username| capitalize}} has no bio </p>
+        {% endif %}
+        {% if user == current_user %}
+        <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+        <a class="btn btn-outline-info btn-md text-center"  href="{{url_for('main.new_post')}}"> Add a Post </a>
+    {% endif %}
+
+   
+        </div>           
+                <div class="row">
+                        <div class="col-md-6">
+                {% for posts in myposts %}
+                    {% if posts.user_id == current_user.id %}
+                <div class="card text-center">
+                        <div class="card-header">
+                          <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                              <a class="nav-link active" href="/post/new/comment/{{posts.id}}">Read Comments</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url_for('main.update_post',id=posts.id)}}">Edit post</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/delete_post/{{posts.id}}">Delete Post</a>
+                            </li>
+                          </ul>
+                        </div>
+                        
+                        <div class="card-body">
+                          <h2 class="card-title">{{posts.title|capitalize}}</h2>
+                          <p class="card-text">{{posts.post|truncate(100)}}</p>
+                          <a href="/post/{{posts.id}}" class="btn btn-info">View full post</a>
+                          <hr>
+                          <p class="card-footer"><small class="text-muted"> Posted on: {{posts.posted.strftime('%Y-%m-%d')}}</small></p>
+                          
+                        </div>
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                    </div>
+                
+            <!--Display profile photo-->
+        <div class="col-md-6">
+
+            {% if user.profile_pic_path %}
+                <img src="{{url_for('static',filename=user.profile_pic_path)}}"style="border-radius 60%; width:300px;height:300px;padding:0;"alt="">
+                <hr>
+            {%else%}
+                <p>No profile picture</p>
+            {% endif %}
+            {% if user == current_user %}
+            <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+        
+              <input type="file"  name="photo" class="form-control" required>
+              <br>
+              <input type="submit" class="btn btn-info">
+            </form>
+              {% endif %}
+        </div>
+ 
+        
+
+    </div>
+    </div>
+</div>
+{% endblock %}

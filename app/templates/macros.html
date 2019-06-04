@@ -1,0 +1,79 @@
+{% macro displayPostList(posts) %}
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-4" style="padding:2%">
+    <div class="container-fluid">
+        <div class="card-group"style="width:26rem">
+            <div class="card" >
+                <div class="card-body" style="background-color:rgba(211, 211, 211, 0.322)">
+                    <h2 class="card-title"> {{post.title|capitalize}} </h2>
+                    <p class="card-text"> <a href="{{url_for('main.single_post',id=post.id)}}"></a>{{post.post | truncate(300)}}</p>
+                    <a href="/post/{{post.id}}"> Read Full Blog Post</a>
+                </div>
+                <div class="card-footer" style="background-color:rgba(114, 198, 201, 0.425)">
+                    <p><small class="text-muted">Posted by: {{post.user.username}}</small></p>
+                    <p><small class="text-muted">Posted on: {{post.posted.strftime('%Y-%m-%d')}}</small></p>                 
+                    
+                </div>      
+            </div>     
+        </div>
+</div>
+</div>
+    <br>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+
+{% macro displayFullPost(full_posts) %}
+
+    {% for posts in full_posts %}
+    <div class="container">
+        <div class="card">
+            <div class="card-header"style="background-color:rgba(211, 211, 211, 0.322)">
+                <h2> {{posts.title|capitalize}}</h2>
+            </div>
+            <div class="card-body">
+            <p> {{posts.post}}</p>
+            <a href="/post/new/comment/{{posts.id}}" class="btn btn-info"> Read Comments</a>  
+            </div>
+            <div class="card-footer" style="background-color:rgba(114, 198, 201, 0.425)">
+                <p> <small class="text-muted">Posted on: {{posts.posted.strftime('%Y-%m-%d')}}</small> </p>
+                <p><small class="text-muted">Posted by: {{posts.user.username}}</small></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endmacro %}
+
+
+{% macro displayLatestPost(latest_posts) %}
+
+        <h2>{{post_latest.title}}</h2>
+        <p> {{post_latest.post}}</p>
+        <p>{{post_latest.posted.strftime('%Y-%m-%d')}}</p>
+        <p>{{post_latest.user.username}}</p>
+
+{% endmacro %}
+
+{% macro displayComments(post_comments) %}
+{% if post_comments %}
+    {% for comment in post_comments %}
+    <div class="thumbnail">
+        <div class="caption">
+            <div class="card" style="width: 40rem;">
+                <div class="card-body"> 
+                    <p class="card-text"><a href="{{url_for('main.single_comment',id=comment.id)}}"></a>{{comment.comments|capitalize}}</p>
+                    <p class="card-subtitle mb-2 text-muted">Posted by:{{comment.username}}</p>
+                    <p class="card-subtitle mb-2 text-muted"> Posted on: {{comment.posted.strftime('%Y-%m-%d')}} </p>
+                    <a href="{{url_for('main.delete_comment',id=comment.id, post_id = comment.post)}}">Delete Comment</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <h3 class ="text-center" style="font-size:200%"> This Post has no Comment </h3>
+{% endif %}
+{% endmacro %}

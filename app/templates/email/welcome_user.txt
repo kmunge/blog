@@ -1,0 +1,9 @@
+Hello {{user.username}}
+
+Welcome to The Learner's Blog,
+
+We have just seen you have signed up for our application and want to welcome you to the family. Take this opportunity to post a new blog and in process provide insight to other users. 
+
+Don't forget to Enjoy the process!
+
+The Learner's Blog Family

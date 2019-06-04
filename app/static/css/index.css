@@ -1,0 +1,25 @@
+h2 {
+    font-family: 'Rancho', cursive;
+    font-size: 250%;
+    text-decoration: underline
+}
+#profile_jumbotron{
+    background-color: rgba(85, 39, 128, 0.685)
+}
+h1 {
+    font-family: 'Rancho', cursive;
+    font-size: 350%;
+    text-decoration: underline;
+    color: rgba(80, 7, 7, 0.863)
+}
+.random {
+    font-family: 'Rancho', cursive;
+    font-size: 150%;
+}
+.btn-default{
+    border: 2px solid rgb(202, 250, 114);
+    
+}
+.btn-default:hover {
+    background-color: rgb(142, 68, 145);
+}

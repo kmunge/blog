@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+{% block content %}
+
+{{format_review|safe}}
+{{ macro.displayFullPost(full_post)}}
+
+{% endblock %}

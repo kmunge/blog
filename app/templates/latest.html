@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header" style="background-color:rgba(211, 211, 211, 0.322)">    
+            <h2>{{post_latest.title}}</h2>
+        </div>
+    <div class="card-body">
+        <p> {{post_latest.post}}</p>
+        <a href="/post/new/comment/{{post_latest.id}}" class="btn btn-info"> Read Comments</a> 
+    </div>
+    <div class="card-footer" style="background-color:rgba(114, 198, 201, 0.425)">
+        <p> <small class="text-muted">Posted on: {{post_latest.posted.strftime('%Y-%m-%d')}}</small></p>
+        <p> <small class="text-muted">Posted by: {{post_latest.user.username}}</small></p>
+    </div>
+    </div>
+</div>
+  {% endblock %}

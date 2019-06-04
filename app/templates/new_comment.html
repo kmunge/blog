@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+    <div class="container" style="background-color:rgba(150, 139, 80, 0.089)">
+            <h2>{{post.title|capitalize}}</h2>
+            <hr>
+        <div class="row">
+            <div class="col-md-7">
+                {{macro.displayComments(post_comments)}}
+                 
+            </div>
+            <div class="col-md-5">
+                
+                {{ wtf.quick_form(comment_form) }}
+                {{simplemde.load}}
+                <br>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
